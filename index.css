@@ -1,0 +1,147 @@
+:root {
+  --bg: #0f172a;
+  --card-bg: #1e293b;
+  --accent: #38bdf8;
+  --text: #f8fafc;
+  --text-muted: #94a3b8;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.container {
+  background-color: var(--card-bg);
+  width: 100%;
+  max-width: 800px;
+  min-height: 500px;
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.page {
+  display: none;
+  animation: fadeIn 0.4s ease-in-out forwards;
+}
+
+.page.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Page 1 Styling */
+.profile-header h1 {
+  font-size: 2.5rem;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.profile-header p {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.bio {
+  margin: 30px 0;
+  line-height: 1.8;
+}
+
+.btn {
+  background-color: var(--accent);
+  color: #0f172a;
+  border: none;
+  padding: 12px 28px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+/* Page 2 Styling */
+.nav-tabs {
+  display: flex;
+  gap: 30px;
+  border-bottom: 2px solid #334155;
+  padding-bottom: 15px;
+  margin-bottom: 30px;
+}
+
+.nav-tab {
+  color: var(--text-muted);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: color 0.2s ease;
+  position: relative;
+}
+
+.nav-tab:hover, .nav-tab.active {
+  color: var(--accent);
+}
+
+.nav-tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: -17px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: var(--accent);
+  border-radius: 2px;
+}
+
+.tab-panel {
+  display: none;
+  animation: fadeIn 0.3s ease-in-out forwards;
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+.back-btn {
+  margin-top: 40px;
+  background: transparent;
+  border: 1px solid var(--text-muted);
+  color: var(--text-muted);
+}
+
+.back-btn:hover {
+  border-color: var(--text);
+  color: var(--text);
+  background: transparent;
+}
+
+.card {
+  background: #0f172a;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  border-left: 4px solid var(--accent);
+}
