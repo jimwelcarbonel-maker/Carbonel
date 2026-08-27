@@ -1,11 +1,15 @@
 :root {
-  --bg: #0f172a;
-  --card-bg: #1e293b;
+  --bg: #030712;
+  --card-bg: rgba(15, 23, 42, 0.75);
   --accent: #38bdf8;
-  --text: #f8fafc;
-  --text-muted: #94a3b8;
-  --danger: #ef4444;
-  --success: #22c55e;
+  --neon-cyan: #06b6d4;
+  --neon-glow: #00f0ff;
+  --text: #f0f9ff;
+  --text-muted: #7dd3fc;
+  --danger: #ff4d4d;
+  --danger-glow: #ff0055;
+  --success: #00ffcc;
+  --border-ice: rgba(56, 189, 248, 0.3);
 }
 
 * {
@@ -17,22 +21,31 @@
 
 body {
   background-color: var(--bg);
+  background-image: 
+    radial-gradient(circle at 15% 15%, rgba(6, 182, 212, 0.25) 0%, transparent 45%),
+    radial-gradient(circle at 85% 85%, rgba(56, 189, 248, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(2, 132, 199, 0.15) 0%, transparent 70%);
+  background-attachment: fixed;
   color: var(--text);
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
   padding: 20px;
+  overflow-x: hidden;
 }
 
 .container {
-  background-color: var(--card-bg);
+  background: var(--card-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   width: 100%;
   max-width: 800px;
   min-height: 500px;
-  border-radius: 16px;
+  border-radius: 20px;
   padding: 40px;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border-ice);
+  box-shadow: 0 0 25px rgba(6, 182, 212, 0.25), inset 0 0 15px rgba(56, 189, 248, 0.1);
   position: relative;
 }
 
@@ -63,19 +76,21 @@ body {
   height: 110px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid var(--accent);
+  border: 2px solid var(--neon-glow);
+  box-shadow: 0 0 15px var(--neon-glow), inset 0 0 10px var(--neon-glow);
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .profile-img:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+  transform: scale(1.08);
+  box-shadow: 0 0 25px var(--neon-glow), 0 0 40px var(--neon-cyan);
 }
 
 .profile-header h1 {
   font-size: 2rem;
-  color: var(--accent);
+  color: #fff;
+  text-shadow: 0 0 8px var(--neon-cyan), 0 0 20px var(--neon-cyan);
   margin-bottom: 5px;
 }
 
@@ -93,24 +108,32 @@ body {
 .bio {
   margin: 30px 0;
   line-height: 1.8;
+  color: var(--text);
+  text-shadow: 0 0 2px rgba(56, 189, 248, 0.5);
 }
 
+/* Glowing Neon Buttons */
 .btn {
-  background-color: var(--accent);
-  color: #0f172a;
-  border: none;
+  background: rgba(6, 182, 212, 0.15);
+  color: var(--neon-glow);
+  border: 1px solid var(--neon-cyan);
   padding: 10px 20px;
   font-size: 0.95rem;
   font-weight: 600;
   border-radius: 8px;
   cursor: pointer;
   display: inline-block;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(6, 182, 212, 0.2);
+  text-shadow: 0 0 5px var(--neon-cyan);
 }
 
 .btn:hover {
-  opacity: 0.9;
+  background: var(--neon-cyan);
+  color: #030712;
+  box-shadow: 0 0 20px var(--neon-glow), 0 0 35px var(--neon-cyan);
   transform: translateY(-2px);
+  text-shadow: none;
 }
 
 /* Actions Toolbar */
@@ -126,26 +149,40 @@ body {
 }
 
 .clear-img-btn {
-  background-color: transparent;
+  background: rgba(255, 77, 77, 0.15);
   color: var(--danger);
   border: 1px solid var(--danger);
+  box-shadow: 0 0 10px rgba(255, 77, 77, 0.2);
+  text-shadow: 0 0 5px var(--danger);
 }
 
 .clear-img-btn:hover {
-  background-color: var(--danger);
+  background: var(--danger);
   color: #fff;
+  box-shadow: 0 0 20px var(--danger-glow), 0 0 30px var(--danger);
+  text-shadow: none;
 }
 
 .save-btn {
-  background-color: var(--success);
-  color: #0f172a;
+  background: rgba(0, 255, 204, 0.15);
+  color: var(--success);
+  border: 1px solid var(--success);
+  box-shadow: 0 0 10px rgba(0, 255, 204, 0.2);
+  text-shadow: 0 0 5px var(--success);
+}
+
+.save-btn:hover {
+  background: var(--success);
+  color: #030712;
+  box-shadow: 0 0 20px var(--success);
+  text-shadow: none;
 }
 
 /* Page 2 Navigation */
 .nav-tabs {
   display: flex;
   gap: 30px;
-  border-bottom: 2px solid #334155;
+  border-bottom: 1px solid var(--border-ice);
   padding-bottom: 15px;
   margin-bottom: 25px;
 }
@@ -155,22 +192,24 @@ body {
   cursor: pointer;
   font-weight: 600;
   font-size: 1.1rem;
-  transition: color 0.2s ease;
+  transition: all 0.3s ease;
   position: relative;
 }
 
 .nav-tab:hover, .nav-tab.active {
-  color: var(--accent);
+  color: var(--neon-glow);
+  text-shadow: 0 0 10px var(--neon-cyan);
 }
 
 .nav-tab.active::after {
   content: '';
   position: absolute;
-  bottom: -17px;
+  bottom: -16px;
   left: 0;
   width: 100%;
-  height: 3px;
-  background-color: var(--accent);
+  height: 2px;
+  background-color: var(--neon-glow);
+  box-shadow: 0 0 10px var(--neon-glow), 0 0 20px var(--neon-cyan);
   border-radius: 2px;
 }
 
@@ -199,8 +238,15 @@ body {
   width: 100%;
   height: 110px;
   object-fit: cover;
-  border-radius: 8px;
-  border: 1px solid #334155;
+  border-radius: 10px;
+  border: 1px solid var(--border-ice);
+  box-shadow: 0 0 10px rgba(6, 182, 212, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.uploaded-img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 15px var(--neon-cyan);
 }
 
 .image-item .delete-btn {
@@ -213,7 +259,7 @@ body {
 }
 
 .delete-btn {
-  background: transparent;
+  background: rgba(15, 23, 42, 0.8);
   color: var(--danger);
   border: 1px solid var(--danger);
   border-radius: 6px;
@@ -222,11 +268,13 @@ body {
   align-items: center;
   justify-content: center;
   transition: all 0.2s ease;
+  box-shadow: 0 0 5px var(--danger);
 }
 
 .delete-btn:hover {
   background: var(--danger);
   color: #fff;
+  box-shadow: 0 0 12px var(--danger);
 }
 
 .back-btn {
@@ -234,12 +282,16 @@ body {
   background: transparent;
   border: 1px solid var(--text-muted);
   color: var(--text-muted);
+  box-shadow: none;
+  text-shadow: none;
 }
 
 .back-btn:hover {
-  border-color: var(--text);
-  color: var(--text);
+  border-color: var(--neon-glow);
+  color: var(--neon-glow);
   background: transparent;
+  box-shadow: 0 0 15px var(--neon-cyan);
+  text-shadow: 0 0 5px var(--neon-glow);
 }
 
 /* Modal Popup Styling */
@@ -251,26 +303,29 @@ body {
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(3, 7, 18, 0.85);
+  backdrop-filter: blur(10px);
   justify-content: center;
   align-items: center;
   padding: 20px;
 }
 
 .modal-content {
-  background-color: var(--card-bg);
+  background: var(--card-bg);
+  border: 1px solid var(--border-ice);
+  box-shadow: 0 0 35px rgba(6, 182, 212, 0.4);
   padding: 30px;
-  border-radius: 16px;
+  border-radius: 20px;
   max-width: 500px;
   width: 100%;
   text-align: center;
   position: relative;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
 }
 
 .modal-content h2 {
   margin-bottom: 20px;
-  color: var(--accent);
+  color: #fff;
+  text-shadow: 0 0 10px var(--neon-cyan);
 }
 
 .close-modal {
@@ -280,10 +335,12 @@ body {
   font-size: 1.8rem;
   cursor: pointer;
   color: var(--text-muted);
+  transition: color 0.2s ease;
 }
 
 .close-modal:hover {
-  color: var(--text);
+  color: var(--neon-glow);
+  text-shadow: 0 0 10px var(--neon-glow);
 }
 
 .full-img-container {
@@ -295,7 +352,8 @@ body {
   max-height: 300px;
   object-fit: contain;
   border-radius: 12px;
-  border: 2px solid var(--accent);
+  border: 1px solid var(--neon-cyan);
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
 }
 
 .modal-actions {

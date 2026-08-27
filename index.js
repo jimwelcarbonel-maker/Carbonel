@@ -15,8 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const deleteProfileBtn = document.getElementById('delete-profile-btn');
   const saveProfileBtn = document.getElementById('save-profile-btn');
 
-  // Default image placeholder
-  const defaultPlaceholder = 'https://via.placeholder.com/150';
+  // Default image placeholder (Neon Cyan SVG)
+  const defaultPlaceholder = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 24 24" fill="none" stroke="%2306b6d4" stroke-width="1.5"><rect width="100%" height="100%" fill="%230f172a"/><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>';
   let tempProfileSrc = '';
 
   // Load Saved Data on Startup
