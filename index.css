@@ -289,9 +289,9 @@ body {
   box-shadow: 0 0 12px var(--danger);
 }
 
-/* Page 2 Back Button Positioning */
+/* Page 2 Back Button Positioning - Adjusted lower */
 .back-btn {
-  margin-top: 55px;
+  margin-top: 90px;
   background: transparent;
   border: 1px solid var(--text-muted);
   color: var(--text-muted);
