@@ -35,7 +35,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Base Container (Page 1) - Adjusted slightly bigger */
+/* Base Container (Page 1) */
 .container {
   background: var(--card-bg);
   backdrop-filter: blur(16px);
@@ -51,7 +51,7 @@ body {
   transition: max-width 0.3s ease, min-height 0.3s ease, padding 0.3s ease;
 }
 
-/* Expanded Container Size (Page 2) - Adjusted slightly bigger */
+/* Expanded Container Size (Page 2) */
 .container.wide-container {
   max-width: 1150px;
   min-height: 680px;
@@ -114,11 +114,16 @@ body {
 }
 
 .bio {
-  margin: 35px 0;
+  margin: 35px 0 15px 0;
   line-height: 1.8;
   font-size: 1.05rem;
   color: var(--text);
   text-shadow: 0 0 2px rgba(56, 189, 248, 0.5);
+}
+
+/* Positioned downwards */
+#next-btn {
+  margin-top: 45px;
 }
 
 .btn {
