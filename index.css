@@ -290,7 +290,7 @@ body {
 }
 
 .back-btn {
-  margin-top: 100px; /* Increased top spacing to push the button down */
+  margin-top: 1000px; /* Increased top spacing to push the button down */
   background: transparent;
   border: 1px solid var(--text-muted);
   color: var(--text-muted);
