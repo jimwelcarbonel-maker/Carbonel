@@ -28,6 +28,20 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Attach Delete functionality using Event Delegation
+  document.getElementById('page-2').addEventListener('click', (e) => {
+    if (e.target.classList.contains('delete-btn')) {
+      const card = e.target.closest('.card');
+      const imageItem = e.target.closest('.image-item');
+      
+      if (card) {
+        card.remove();
+      } else if (imageItem) {
+        imageItem.remove();
+      }
+    }
+  });
+
   // Image Upload Logic for Each Category
   setupImageUploader('upload-activity', 'gallery-activity');
   setupImageUploader('upload-quizzes', 'gallery-quizzes');
@@ -42,13 +56,24 @@ document.addEventListener('DOMContentLoaded', () => {
       if (file) {
         const reader = new FileReader();
         reader.onload = (event) => {
+          const wrapper = document.createElement('div');
+          wrapper.className = 'image-item';
+
           const img = document.createElement('img');
           img.src = event.target.result;
           img.className = 'uploaded-img';
-          gallery.appendChild(img);
+
+          const deleteBtn = document.createElement('button');
+          deleteBtn.className = 'delete-btn';
+          deleteBtn.innerHTML = '&times;';
+
+          wrapper.appendChild(img);
+          wrapper.appendChild(deleteBtn);
+          gallery.appendChild(wrapper);
         };
         reader.readAsDataURL(file);
       }
+      fileInput.value = ''; // Reset input to allow re-uploading the same file if needed
     });
   }
 });
