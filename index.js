@@ -8,6 +8,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const navTabs = document.querySelectorAll('.nav-tab');
   const tabPanels = document.querySelectorAll('.tab-panel');
 
+  // Profile Modal Elements
+  const profileImg = document.getElementById('profile-trigger');
+  const profileModal = document.getElementById('profile-modal');
+  const fullProfileView = document.getElementById('full-profile-view');
+  const closeProfile = document.getElementById('close-profile');
+
+  // Gallery Modal Elements
   const viewerModal = document.getElementById('viewer-modal');
   const viewerImg = document.getElementById('viewer-img-src');
   const closeViewer = document.getElementById('close-viewer');
@@ -37,7 +44,20 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Lightbox Image Viewer for Gallery Images
+  // Open Profile Picture Modal
+  if (profileImg) {
+    profileImg.addEventListener('click', () => {
+      fullProfileView.src = profileImg.src;
+      profileModal.style.display = 'flex';
+    });
+  }
+
+  // Close Profile Picture Modal
+  closeProfile.addEventListener('click', () => {
+    profileModal.style.display = 'none';
+  });
+
+  // Lightbox Image Viewer for Gallery Items
   document.querySelectorAll('.image-gallery').forEach(gallery => {
     gallery.addEventListener('click', (e) => {
       if (e.target.tagName === 'IMG') {
@@ -47,11 +67,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Close Gallery Modal
   closeViewer.addEventListener('click', () => {
     viewerModal.style.display = 'none';
   });
 
+  // Close Modals on Overlay Click
   window.addEventListener('click', (e) => {
+    if (e.target === profileModal) {
+      profileModal.style.display = 'none';
+    }
     if (e.target === viewerModal) {
       viewerModal.style.display = 'none';
     }

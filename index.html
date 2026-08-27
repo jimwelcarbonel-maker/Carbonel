@@ -11,7 +11,8 @@
     <!-- Page 1: Profile / About Me -->
     <div class="page active" id="page-1">
       <div class="profile-container">
-        <img src="hello.png" alt="Profile Picture" class="profile-img" id="profile-trigger" />
+        <!-- Profile image trigger -->
+        <img src="hello.png" alt="Profile Picture" class="profile-img" id="profile-trigger" title="Click to view" />
         <div class="profile-header">
           <h1 id="user-name">Jimwel Carbonel</h1>
           <p class="subtitle" id="user-role">Computer Science Student & Future Game Developer</p>
@@ -19,7 +20,7 @@
         </div>
       </div>
       <p class="bio" id="user-bio">
-        Welcome to my academic portfolio. I wanto be a game developer in the future. I am currently studying Computer Science at the University of Cavite. I have a strong passion for programming and game development, and I am constantly seeking opportunities to enhance my skills and knowledge in this field.
+       Welcome to my academic portfolio. I wanto be a game developer in the future. I am currently studying Computer Science at the University of Cavite. I have a strong passion for programming and game development, and I am constantly seeking opportunities to enhance my skills and knowledge in this field.
       </p>
       <button class="btn" id="next-btn">View Work &rarr;</button>
     </div>
@@ -35,21 +36,21 @@
       <!-- Activity Tab -->
       <div class="tab-panel active" id="tab-activity">
         <div class="image-gallery" id="gallery-activity">
-          <!-- Static or dynamically rendered images will appear here -->
+          <!-- Gallery images here -->
         </div>
       </div>
 
       <!-- Quizzes Tab -->
       <div class="tab-panel" id="tab-quizzes">
         <div class="image-gallery" id="gallery-quizzes">
-          <!-- Static or dynamically rendered images will appear here -->
+          <!-- Gallery images here -->
         </div>
       </div>
 
       <!-- Laboratory Tab -->
       <div class="tab-panel" id="tab-laboratory">
         <div class="image-gallery" id="gallery-laboratory">
-          <!-- Static or dynamically rendered images will appear here -->
+          <!-- Gallery images here -->
         </div>
       </div>
 
@@ -57,7 +58,18 @@
     </div>
   </div>
 
-  <!-- Image Lightbox Modal -->
+  <!-- Profile Image Modal -->
+  <div class="modal" id="profile-modal">
+    <div class="modal-content">
+      <span class="close-modal" id="close-profile">&times;</span>
+      <h2>Profile Picture</h2>
+      <div class="full-img-container">
+        <img src="" alt="Profile Full View" id="full-profile-view" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Gallery Image Lightbox Modal -->
   <div class="modal" id="viewer-modal">
     <div class="modal-content viewer-modal-content">
       <span class="close-modal" id="close-viewer">&times;</span>
