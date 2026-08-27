@@ -35,7 +35,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Container Settings */
+/* Base Container */
 .container {
   background: var(--card-bg);
   backdrop-filter: blur(16px);
@@ -51,11 +51,13 @@ body {
   transition: max-width 0.3s ease, min-height 0.3s ease;
 }
 
+/* Expanded Container Size for Page 2 */
 .container.wide-container {
   max-width: 1150px;
-  max-height: 88vh;
+  height: 85vh;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .page {
@@ -66,7 +68,35 @@ body {
 .page.active {
   display: flex;
   flex-direction: column;
+}
+
+/* Scrollable Container logic specifically for Page 2 */
+#page-2.active {
+  display: flex;
+  flex-direction: column;
   height: 100%;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+/* Scrollbar for Page 2 */
+#page-2::-webkit-scrollbar {
+  width: 8px;
+}
+
+#page-2::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.6);
+  border-radius: 4px;
+}
+
+#page-2::-webkit-scrollbar-thumb {
+  background: var(--neon-cyan);
+  border-radius: 4px;
+  box-shadow: 0 0 8px var(--neon-cyan);
+}
+
+#page-2::-webkit-scrollbar-thumb:hover {
+  background: var(--neon-glow);
 }
 
 @keyframes fadeIn {
@@ -235,35 +265,11 @@ body {
   flex-direction: column;
 }
 
-/* Scrollable Image Gallery Container */
 .image-gallery {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: 18px;
-  max-height: 360px;
-  overflow-y: auto;
-  padding-right: 8px;
   margin-bottom: 20px;
-}
-
-/* Custom Scrollbar */
-.image-gallery::-webkit-scrollbar {
-  width: 8px;
-}
-
-.image-gallery::-webkit-scrollbar-track {
-  background: rgba(15, 23, 42, 0.6);
-  border-radius: 4px;
-}
-
-.image-gallery::-webkit-scrollbar-thumb {
-  background: var(--neon-cyan);
-  border-radius: 4px;
-  box-shadow: 0 0 8px var(--neon-cyan);
-}
-
-.image-gallery::-webkit-scrollbar-thumb:hover {
-  background: var(--neon-glow);
 }
 
 .image-item {
@@ -316,7 +322,8 @@ body {
 }
 
 .back-btn {
-  margin-top: auto;
+  margin-top: 25px;
+  margin-bottom: 10px;
   align-self: flex-start;
   background: transparent;
   border: 1px solid var(--text-muted);
