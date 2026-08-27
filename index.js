@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Open Profile Picture Modal
+  // Open Profile Picture Modal on Click
   if (profileImg) {
     profileImg.addEventListener('click', () => {
       fullProfileView.src = profileImg.src;
@@ -53,9 +53,11 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Close Profile Picture Modal
-  closeProfile.addEventListener('click', () => {
-    profileModal.style.display = 'none';
-  });
+  if (closeProfile) {
+    closeProfile.addEventListener('click', () => {
+      profileModal.style.display = 'none';
+    });
+  }
 
   // Lightbox Image Viewer for Gallery Items
   document.querySelectorAll('.image-gallery').forEach(gallery => {
@@ -68,11 +70,13 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Close Gallery Modal
-  closeViewer.addEventListener('click', () => {
-    viewerModal.style.display = 'none';
-  });
+  if (closeViewer) {
+    closeViewer.addEventListener('click', () => {
+      viewerModal.style.display = 'none';
+    });
+  }
 
-  // Close Modals on Overlay Click
+  // Close Modals when clicking outside the content area
   window.addEventListener('click', (e) => {
     if (e.target === profileModal) {
       profileModal.style.display = 'none';
