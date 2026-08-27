@@ -121,7 +121,7 @@ body {
   text-shadow: 0 0 2px rgba(56, 189, 248, 0.5);
 }
 
-/* Positioned downwards */
+/* Page 1 Button Positioning */
 #next-btn {
   margin-top: 45px;
 }
@@ -289,15 +289,15 @@ body {
   box-shadow: 0 0 12px var(--danger);
 }
 
+/* Page 2 Back Button Positioning */
 .back-btn {
-  margin-top: 1000px; /* Increased top spacing to push the button down */
+  margin-top: 55px;
   background: transparent;
   border: 1px solid var(--text-muted);
   color: var(--text-muted);
   box-shadow: none;
   text-shadow: none;
 }
-
 
 .back-btn:hover {
   border-color: var(--neon-glow);
