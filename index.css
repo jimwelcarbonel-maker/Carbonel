@@ -31,22 +31,31 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  padding: 20px;
+  padding: 30px;
   overflow-x: hidden;
 }
 
+/* Base Container (Page 1) - Adjusted slightly bigger */
 .container {
   background: var(--card-bg);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   width: 100%;
-  max-width: 800px;
-  min-height: 500px;
-  border-radius: 20px;
-  padding: 40px;
+  max-width: 900px;
+  min-height: 580px;
+  border-radius: 24px;
+  padding: 50px;
   border: 1px solid var(--border-ice);
-  box-shadow: 0 0 25px rgba(6, 182, 212, 0.25), inset 0 0 15px rgba(56, 189, 248, 0.1);
+  box-shadow: 0 0 30px rgba(6, 182, 212, 0.25), inset 0 0 15px rgba(56, 189, 248, 0.1);
   position: relative;
+  transition: max-width 0.3s ease, min-height 0.3s ease, padding 0.3s ease;
+}
+
+/* Expanded Container Size (Page 2) - Adjusted slightly bigger */
+.container.wide-container {
+  max-width: 1150px;
+  min-height: 680px;
+  padding: 55px;
 }
 
 .page {
@@ -66,47 +75,48 @@ body {
 .profile-container {
   display: flex;
   align-items: center;
-  gap: 25px;
-  margin-bottom: 20px;
+  gap: 30px;
+  margin-bottom: 25px;
 }
 
 .profile-img {
-  width: 110px;
-  height: 110px;
+  width: 130px;
+  height: 130px;
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid var(--neon-glow);
-  box-shadow: 0 0 15px var(--neon-glow), inset 0 0 10px var(--neon-glow);
+  box-shadow: 0 0 18px var(--neon-glow), inset 0 0 10px var(--neon-glow);
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .profile-img:hover {
   transform: scale(1.08);
-  box-shadow: 0 0 25px var(--neon-glow), 0 0 40px var(--neon-cyan);
+  box-shadow: 0 0 28px var(--neon-glow), 0 0 45px var(--neon-cyan);
 }
 
 .profile-header h1 {
-  font-size: 2rem;
+  font-size: 2.3rem;
   color: #fff;
   text-shadow: 0 0 8px var(--neon-cyan), 0 0 20px var(--neon-cyan);
-  margin-bottom: 5px;
+  margin-bottom: 6px;
 }
 
 .profile-header .subtitle {
   color: var(--text);
-  font-size: 1rem;
+  font-size: 1.1rem;
   margin-bottom: 4px;
 }
 
 .profile-header .section-info {
   color: var(--text-muted);
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 
 .bio {
-  margin: 30px 0;
+  margin: 35px 0;
   line-height: 1.8;
+  font-size: 1.05rem;
   color: var(--text);
   text-shadow: 0 0 2px rgba(56, 189, 248, 0.5);
 }
@@ -115,10 +125,10 @@ body {
   background: rgba(6, 182, 212, 0.15);
   color: var(--neon-glow);
   border: 1px solid var(--neon-cyan);
-  padding: 10px 20px;
-  font-size: 0.95rem;
+  padding: 12px 24px;
+  font-size: 1rem;
   font-weight: 600;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
   display: inline-block;
   transition: all 0.3s ease;
@@ -136,9 +146,9 @@ body {
 
 .panel-actions, .modal-actions {
   display: flex;
-  gap: 10px;
+  gap: 12px;
   flex-wrap: wrap;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
 .file-input {
@@ -177,17 +187,17 @@ body {
 
 .nav-tabs {
   display: flex;
-  gap: 30px;
+  gap: 35px;
   border-bottom: 1px solid var(--border-ice);
   padding-bottom: 15px;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
 }
 
 .nav-tab {
   color: var(--text-muted);
   cursor: pointer;
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   transition: all 0.3s ease;
   position: relative;
 }
@@ -220,9 +230,9 @@ body {
 
 .image-gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 15px;
-  margin-bottom: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 18px;
+  margin-bottom: 25px;
 }
 
 .image-item {
@@ -231,9 +241,9 @@ body {
 
 .uploaded-img {
   width: 100%;
-  height: 110px;
+  height: 135px;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 12px;
   border: 1px solid var(--border-ice);
   box-shadow: 0 0 10px rgba(6, 182, 212, 0.2);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -247,11 +257,11 @@ body {
 
 .image-item .delete-btn {
   position: absolute;
-  top: 5px;
-  right: 5px;
-  width: 24px;
-  height: 24px;
-  font-size: 1rem;
+  top: 6px;
+  right: 6px;
+  width: 26px;
+  height: 26px;
+  font-size: 1.1rem;
 }
 
 .delete-btn {
@@ -275,7 +285,7 @@ body {
 }
 
 .back-btn {
-  margin-top: 30px;
+  margin-top: 35px;
   background: transparent;
   border: 1px solid var(--text-muted);
   color: var(--text-muted);
@@ -311,16 +321,16 @@ body {
   background: var(--card-bg);
   border: 1px solid var(--border-ice);
   box-shadow: 0 0 35px rgba(6, 182, 212, 0.4);
-  padding: 30px;
+  padding: 35px;
   border-radius: 20px;
-  max-width: 500px;
+  max-width: 550px;
   width: 100%;
   text-align: center;
   position: relative;
 }
 
 .viewer-modal-content {
-  max-width: 700px;
+  max-width: 850px;
 }
 
 .modal-content h2 {
@@ -333,7 +343,7 @@ body {
   position: absolute;
   top: 15px;
   right: 20px;
-  font-size: 2rem;
+  font-size: 2.2rem;
   cursor: pointer;
   color: var(--text-muted);
   transition: color 0.2s ease;
@@ -345,7 +355,7 @@ body {
 }
 
 .full-img-container {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -353,7 +363,7 @@ body {
 
 #full-profile-view, #viewer-img-src {
   max-width: 100%;
-  max-height: 60vh;
+  max-height: 70vh;
   object-fit: contain;
   border-radius: 12px;
   border: 1px solid var(--neon-cyan);

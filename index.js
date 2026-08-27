@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+  const mainContainer = document.querySelector('.container');
   const page1 = document.getElementById('page-1');
   const page2 = document.getElementById('page-2');
   const nextBtn = document.getElementById('next-btn');
@@ -30,15 +31,17 @@ document.addEventListener('DOMContentLoaded', () => {
   loadSavedData('tab-quizzes', 'gallery-quizzes');
   loadSavedData('tab-assignment', 'gallery-assignment');
 
-  // Navigation Logic
+  // Navigation Logic + Container Resizing
   nextBtn.addEventListener('click', () => {
     page1.classList.remove('active');
     page2.classList.add('active');
+    mainContainer.classList.add('wide-container');
   });
 
   backBtn.addEventListener('click', () => {
     page2.classList.remove('active');
     page1.classList.add('active');
+    mainContainer.classList.remove('wide-container');
   });
 
   tabs.forEach(tab => {
@@ -105,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Click handling for image previewing vs deleting
+  // Image Preview & Delete Delegation
   document.getElementById('page-2').addEventListener('click', (e) => {
     if (e.target.classList.contains('delete-btn')) {
       const imageItem = e.target.closest('.image-item');

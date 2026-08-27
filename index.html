@@ -10,7 +10,7 @@
 
   <div class="container">
     
-    <!-- Information Ko At Profile -->
+    <!-- PAGE 1: About Me -->
     <section id="page-1" class="page active">
       <div class="profile-container">
         <img src="profile.jpg" alt="Jimwel E. Carbonel" id="profile-img-trigger" class="profile-img" title="Click to view full profile">
@@ -28,7 +28,7 @@
       <button id="next-btn" class="btn">View Work & Coursework &rarr;</button>
     </section>
 
-    <!-- Mga Gawain -->
+    <!-- PAGE 2: Coursework & Content -->
     <section id="page-2" class="page">
       <nav class="nav-tabs">
         <span class="nav-tab active" data-tab="tab-activity">Activity</span>
@@ -36,34 +36,34 @@
         <span class="nav-tab" data-tab="tab-assignment">Laboratory</span>
       </nav>
 
-      <!-- Activity -->
+      <!-- Sub-Tab 1: Activity -->
       <div id="tab-activity" class="tab-panel active">
         <div class="panel-actions">
           <input type="file" id="upload-activity" class="file-input" accept="image/*">
           <label for="upload-activity" class="btn upload-btn">+ Add Image</label>
-          <button class="btn clear-img-btn" data-gallery="gallery-activity">Delete All Images</button>
+          <button class="btn clear-img-btn" data-gallery="gallery-activity">Delete Images</button>
           <button class="btn save-btn" data-panel="tab-activity">Save Activity</button>
         </div>
         <div class="image-gallery" id="gallery-activity"></div>
       </div>
 
-      <!-- Quizzes -->
+      <!-- Sub-Tab 2: Quizzes -->
       <div id="tab-quizzes" class="tab-panel">
         <div class="panel-actions">
           <input type="file" id="upload-quizzes" class="file-input" accept="image/*">
           <label for="upload-quizzes" class="btn upload-btn">+ Add Image</label>
-          <button class="btn clear-img-btn" data-gallery="gallery-quizzes">Delete All Images</button>
+          <button class="btn clear-img-btn" data-gallery="gallery-quizzes">Delete Images</button>
           <button class="btn save-btn" data-panel="tab-quizzes">Save Quizzes</button>
         </div>
         <div class="image-gallery" id="gallery-quizzes"></div>
       </div>
 
-      <!-- Laboratory -->
+      <!-- Sub-Tab 3: Laboratory -->
       <div id="tab-assignment" class="tab-panel">
         <div class="panel-actions">
           <input type="file" id="upload-assignment" class="file-input" accept="image/*">
           <label for="upload-assignment" class="btn upload-btn">+ Add Image</label>
-          <button class="btn clear-img-btn" data-gallery="gallery-assignment">Delete All Images</button>
+          <button class="btn clear-img-btn" data-gallery="gallery-assignment">Delete Images</button>
           <button class="btn save-btn" data-panel="tab-assignment">Save Laboratory</button>
         </div>
         <div class="image-gallery" id="gallery-assignment"></div>
@@ -74,7 +74,7 @@
 
   </div>
 
-  <!-- Para Ma-edit Yung Profile  -->
+  <!-- PROFILE MODAL OVERLAY -->
   <div id="profile-modal" class="modal">
     <div class="modal-content">
       <span class="close-modal close-profile-modal">&times;</span>
@@ -86,14 +86,14 @@
 
       <div class="modal-actions">
         <input type="file" id="upload-profile" class="file-input" accept="image/*">
-        <label for="upload-profile" class="btn upload-btn"> Add Image</label>
-        <button id="delete-profile-btn" class="btn clear-img-btn"> Delete Image</button>
-        <button id="save-profile-btn" class="btn save-btn"> Save Image</button>
+        <label for="upload-profile" class="btn upload-btn">1. Add Image</label>
+        <button id="delete-profile-btn" class="btn clear-img-btn">2. Delete Image</button>
+        <button id="save-profile-btn" class="btn save-btn">3. Save Image</button>
       </div>
     </div>
   </div>
 
-  <!-- Para Maview Yung Image  -->
+  <!-- GALLERY IMAGE PREVIEW MODAL -->
   <div id="image-viewer-modal" class="modal">
     <div class="modal-content viewer-modal-content">
       <span class="close-modal close-viewer-modal">&times;</span>
