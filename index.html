@@ -1,109 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portfolio</title>
-  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-  <div class="container">
-    
-    <!-- PAGE 1: About Me -->
-    <section id="page-1" class="page active">
+  <div class="container" id="main-container">
+    <!-- Page 1: Profile / About Me -->
+    <div class="page active" id="page-1">
       <div class="profile-container">
-        <img src="profile.jpg" alt="Jimwel E. Carbonel" id="profile-img-trigger" class="profile-img" title="Click to view full profile">
+        <img src="profile.jpg" alt="Profile Picture" class="profile-img" id="profile-trigger" />
         <div class="profile-header">
-          <h1>Hello, I'm Jimwel E. Carbonel</h1>
-          <p class="subtitle">Computer Science Student & Future Game Developer</p>
-          <p class="section-info">From: BSCS-3C</p>
+          <h1 id="user-name">Jimwel Carbonel</h1>
+          <p class="subtitle" id="user-role">Computer Science Student</p>
+          <p class="section-info" id="user-location">Dasmariñas, Cavite</p>
         </div>
       </div>
+      <p class="bio" id="user-bio">
+        Welcome to my academic portfolio. Explore my activities, quizzes, and laboratory work using the navigation menu.
+      </p>
+      <button class="btn" id="next-btn">View Work &rarr;</button>
+    </div>
 
-      <div class="bio">
-        <p>Welcome to my personal portfolio! I am passionate about how to build and create a game and develop my skills in game development. I want to contribute to the gaming industry by creating engaging and innovative experiences.</p>
-      </div>
-
-      <button id="next-btn" class="btn">View Work & Coursework &rarr;</button>
-    </section>
-
-    <!-- PAGE 2: Coursework & Content -->
-    <section id="page-2" class="page">
+    <!-- Page 2: Tabs & Gallery Viewer -->
+    <div class="page" id="page-2">
       <nav class="nav-tabs">
-        <span class="nav-tab active" data-tab="tab-activity">Activity</span>
-        <span class="nav-tab" data-tab="tab-quizzes">Quizzes</span>
-        <span class="nav-tab" data-tab="tab-assignment">Laboratory</span>
+        <span class="nav-tab active" data-tab="activity">Activity</span>
+        <span class="nav-tab" data-tab="quizzes">Quizzes</span>
+        <span class="nav-tab" data-tab="laboratory">Laboratory</span>
       </nav>
 
-      <!-- Sub-Tab 1: Activity -->
-      <div id="tab-activity" class="tab-panel active">
-        <div class="panel-actions">
-          <input type="file" id="upload-activity" class="file-input" accept="image/*">
-          <label for="upload-activity" class="btn upload-btn">+ Add Image</label>
-          <button class="btn clear-img-btn" data-gallery="gallery-activity">Delete Images</button>
-          <button class="btn save-btn" data-panel="tab-activity">Save Activity</button>
+      <!-- Activity Tab -->
+      <div class="tab-panel active" id="tab-activity">
+        <div class="image-gallery" id="gallery-activity">
+          <!-- Static or dynamically rendered images will appear here -->
         </div>
-        <div class="image-gallery" id="gallery-activity"></div>
       </div>
 
-      <!-- Sub-Tab 2: Quizzes -->
-      <div id="tab-quizzes" class="tab-panel">
-        <div class="panel-actions">
-          <input type="file" id="upload-quizzes" class="file-input" accept="image/*">
-          <label for="upload-quizzes" class="btn upload-btn">+ Add Image</label>
-          <button class="btn clear-img-btn" data-gallery="gallery-quizzes">Delete Images</button>
-          <button class="btn save-btn" data-panel="tab-quizzes">Save Quizzes</button>
+      <!-- Quizzes Tab -->
+      <div class="tab-panel" id="tab-quizzes">
+        <div class="image-gallery" id="gallery-quizzes">
+          <!-- Static or dynamically rendered images will appear here -->
         </div>
-        <div class="image-gallery" id="gallery-quizzes"></div>
       </div>
 
-      <!-- Sub-Tab 3: Laboratory -->
-      <div id="tab-assignment" class="tab-panel">
-        <div class="panel-actions">
-          <input type="file" id="upload-assignment" class="file-input" accept="image/*">
-          <label for="upload-assignment" class="btn upload-btn">+ Add Image</label>
-          <button class="btn clear-img-btn" data-gallery="gallery-assignment">Delete Images</button>
-          <button class="btn save-btn" data-panel="tab-assignment">Save Laboratory</button>
+      <!-- Laboratory Tab -->
+      <div class="tab-panel" id="tab-laboratory">
+        <div class="image-gallery" id="gallery-laboratory">
+          <!-- Static or dynamically rendered images will appear here -->
         </div>
-        <div class="image-gallery" id="gallery-assignment"></div>
       </div>
 
-      <button id="back-btn" class="btn back-btn">&larr; Back to About Me</button>
-    </section>
-
-  </div>
-
-  <!-- PROFILE MODAL OVERLAY -->
-  <div id="profile-modal" class="modal">
-    <div class="modal-content">
-      <span class="close-modal close-profile-modal">&times;</span>
-      <h2>Full Profile Picture</h2>
-      
-      <div class="full-img-container">
-        <img id="full-profile-view" src="profile.jpg" alt="Full Profile Image">
-      </div>
-
-      <div class="modal-actions">
-        <input type="file" id="upload-profile" class="file-input" accept="image/*">
-        <label for="upload-profile" class="btn upload-btn"> Add Image</label>
-        <button id="delete-profile-btn" class="btn clear-img-btn"> Delete Image</button>
-        <button id="save-profile-btn" class="btn save-btn"> Save Image</button>
-      </div>
+      <button class="btn back-btn" id="back-btn">&larr; Back to About Me</button>
     </div>
   </div>
 
-  <!-- GALLERY IMAGE PREVIEW MODAL -->
-  <div id="image-viewer-modal" class="modal">
+  <!-- Image Lightbox Modal -->
+  <div class="modal" id="viewer-modal">
     <div class="modal-content viewer-modal-content">
-      <span class="close-modal close-viewer-modal">&times;</span>
-      <h2>Image Preview</h2>
+      <span class="close-modal" id="close-viewer">&times;</span>
       <div class="full-img-container">
-        <img id="viewer-img-src" src="" alt="Full Preview">
+        <img src="" alt="Full view" id="viewer-img-src" />
       </div>
     </div>
   </div>
 
-  <script src="index.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
