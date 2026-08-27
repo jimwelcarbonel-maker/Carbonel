@@ -77,7 +77,7 @@
   <!-- PROFILE MODAL OVERLAY -->
   <div id="profile-modal" class="modal">
     <div class="modal-content">
-      <span class="close-modal">&times;</span>
+      <span class="close-modal close-profile-modal">&times;</span>
       <h2>Full Profile Picture</h2>
       
       <div class="full-img-container">
@@ -86,9 +86,9 @@
 
       <div class="modal-actions">
         <input type="file" id="upload-profile" class="file-input" accept="image/*">
-        <label for="upload-profile" class="btn upload-btn">1. Add Image</label>
-        <button id="delete-profile-btn" class="btn clear-img-btn">2. Delete Image</button>
-        <button id="save-profile-btn" class="btn save-btn">3. Save Image</button>
+        <label for="upload-profile" class="btn upload-btn"> Add Image</label>
+        <button id="delete-profile-btn" class="btn clear-img-btn"> Delete Image</button>
+        <button id="save-profile-btn" class="btn save-btn"> Save Image</button>
       </div>
     </div>
   </div>
@@ -96,10 +96,10 @@
   <!-- GALLERY IMAGE PREVIEW MODAL -->
   <div id="image-viewer-modal" class="modal">
     <div class="modal-content viewer-modal-content">
-      <span class="close-viewer-modal close-modal">&times;</span>
+      <span class="close-modal close-viewer-modal">&times;</span>
       <h2>Image Preview</h2>
       <div class="full-img-container">
-        <img id="viewer-img-src" src="" alt="Viewed Image">
+        <img id="viewer-img-src" src="" alt="Full Preview">
       </div>
     </div>
   </div>

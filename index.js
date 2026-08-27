@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Profile Modal Elements
   const profileImgTrigger = document.getElementById('profile-img-trigger');
   const profileModal = document.getElementById('profile-modal');
-  const closeModal = document.querySelector('.close-modal');
+  const closeProfileModal = document.querySelector('.close-profile-modal');
   const fullProfileView = document.getElementById('full-profile-view');
   const uploadProfile = document.getElementById('upload-profile');
   const deleteProfileBtn = document.getElementById('delete-profile-btn');
@@ -20,17 +20,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const viewerImgSrc = document.getElementById('viewer-img-src');
   const closeViewerModal = document.querySelector('.close-viewer-modal');
 
-  // Default image placeholder (Neon Cyan SVG)
+  // SVG Default Placeholder
   const defaultPlaceholder = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 24 24" fill="none" stroke="%2306b6d4" stroke-width="1.5"><rect width="100%" height="100%" fill="%230f172a"/><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>';
   let tempProfileSrc = '';
 
-  // Load Saved Data on Startup
+  // Load Saved Data
   loadSavedProfile();
   loadSavedData('tab-activity', 'gallery-activity');
   loadSavedData('tab-quizzes', 'gallery-quizzes');
   loadSavedData('tab-assignment', 'gallery-assignment');
 
-  // Page Navigation
+  // Navigation Logic
   nextBtn.addEventListener('click', () => {
     page1.classList.remove('active');
     page2.classList.add('active');
@@ -52,18 +52,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Profile Modal Open & Close Logic
+  // Open Profile Modal
   profileImgTrigger.addEventListener('click', () => {
     profileModal.style.display = 'flex';
     fullProfileView.src = profileImgTrigger.src;
     tempProfileSrc = profileImgTrigger.src;
   });
 
-  closeModal.addEventListener('click', () => {
+  // Close Modals
+  closeProfileModal.addEventListener('click', () => {
     profileModal.style.display = 'none';
   });
 
-  // Gallery Viewer Modal Close Logic
   closeViewerModal.addEventListener('click', () => {
     imageViewerModal.style.display = 'none';
   });
@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Profile Modal: Add Image
+  // Profile Controls
   uploadProfile.addEventListener('change', (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -89,13 +89,11 @@ document.addEventListener('DOMContentLoaded', () => {
     uploadProfile.value = '';
   });
 
-  // Profile Modal: Delete Image
   deleteProfileBtn.addEventListener('click', () => {
     fullProfileView.src = defaultPlaceholder;
     tempProfileSrc = defaultPlaceholder;
   });
 
-  // Profile Modal: Save Image
   saveProfileBtn.addEventListener('click', () => {
     profileImgTrigger.src = tempProfileSrc;
     try {
@@ -107,18 +105,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Click Delegations inside Page 2 (Delete vs View Image)
+  // Click handling for image previewing vs deleting
   document.getElementById('page-2').addEventListener('click', (e) => {
-    // Delete Button clicked
     if (e.target.classList.contains('delete-btn')) {
       const imageItem = e.target.closest('.image-item');
       if (imageItem) imageItem.remove();
       return;
     }
 
-    // Gallery Image clicked -> Open Full View
     if (e.target.classList.contains('uploaded-img')) {
-      viewerImgSrc.src = e.target.src;
+      viewerImgSrc.setAttribute('src', e.target.src);
       imageViewerModal.style.display = 'flex';
     }
   });
@@ -152,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Setup Gallery Uploads
+  // Upload Logic Setup
   setupImageUploader('upload-activity', 'gallery-activity');
   setupImageUploader('upload-quizzes', 'gallery-quizzes');
   setupImageUploader('upload-assignment', 'gallery-assignment');
