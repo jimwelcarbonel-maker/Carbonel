@@ -290,13 +290,14 @@ body {
 }
 
 .back-btn {
-  margin-top: 35px;
+  margin-top: 55px; /* Increased top spacing to push the button down */
   background: transparent;
   border: 1px solid var(--text-muted);
   color: var(--text-muted);
   box-shadow: none;
   text-shadow: none;
 }
+
 
 .back-btn:hover {
   border-color: var(--neon-glow);
