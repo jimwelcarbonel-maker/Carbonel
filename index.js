@@ -15,6 +15,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const deleteProfileBtn = document.getElementById('delete-profile-btn');
   const saveProfileBtn = document.getElementById('save-profile-btn');
 
+  // Gallery Viewer Modal Elements
+  const imageViewerModal = document.getElementById('image-viewer-modal');
+  const viewerImgSrc = document.getElementById('viewer-img-src');
+  const closeViewerModal = document.querySelector('.close-viewer-modal');
+
   // Default image placeholder (Neon Cyan SVG)
   const defaultPlaceholder = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 24 24" fill="none" stroke="%2306b6d4" stroke-width="1.5"><rect width="100%" height="100%" fill="%230f172a"/><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>';
   let tempProfileSrc = '';
@@ -47,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Modal Open & Close Logic
+  // Profile Modal Open & Close Logic
   profileImgTrigger.addEventListener('click', () => {
     profileModal.style.display = 'flex';
     fullProfileView.src = profileImgTrigger.src;
@@ -58,13 +63,21 @@ document.addEventListener('DOMContentLoaded', () => {
     profileModal.style.display = 'none';
   });
 
+  // Gallery Viewer Modal Close Logic
+  closeViewerModal.addEventListener('click', () => {
+    imageViewerModal.style.display = 'none';
+  });
+
   window.addEventListener('click', (e) => {
     if (e.target === profileModal) {
       profileModal.style.display = 'none';
     }
+    if (e.target === imageViewerModal) {
+      imageViewerModal.style.display = 'none';
+    }
   });
 
-  // Modal Function 1: Add Image
+  // Profile Modal: Add Image
   uploadProfile.addEventListener('change', (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -76,13 +89,13 @@ document.addEventListener('DOMContentLoaded', () => {
     uploadProfile.value = '';
   });
 
-  // Modal Function 2: Delete Image
+  // Profile Modal: Delete Image
   deleteProfileBtn.addEventListener('click', () => {
     fullProfileView.src = defaultPlaceholder;
     tempProfileSrc = defaultPlaceholder;
   });
 
-  // Modal Function 3: Save Image
+  // Profile Modal: Save Image
   saveProfileBtn.addEventListener('click', () => {
     profileImgTrigger.src = tempProfileSrc;
     try {
@@ -94,11 +107,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Delete Individual Gallery Image
+  // Click Delegations inside Page 2 (Delete vs View Image)
   document.getElementById('page-2').addEventListener('click', (e) => {
+    // Delete Button clicked
     if (e.target.classList.contains('delete-btn')) {
       const imageItem = e.target.closest('.image-item');
       if (imageItem) imageItem.remove();
+      return;
+    }
+
+    // Gallery Image clicked -> Open Full View
+    if (e.target.classList.contains('uploaded-img')) {
+      viewerImgSrc.src = e.target.src;
+      imageViewerModal.style.display = 'flex';
     }
   });
 
@@ -158,6 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const img = document.createElement('img');
     img.src = src;
     img.className = 'uploaded-img';
+    img.title = 'Click to view full image';
 
     const deleteBtn = document.createElement('button');
     deleteBtn.className = 'delete-btn';

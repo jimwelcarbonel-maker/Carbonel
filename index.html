@@ -13,7 +13,6 @@
     <!-- PAGE 1: About Me -->
     <section id="page-1" class="page active">
       <div class="profile-container">
-        <!-- Clickable Profile Image -->
         <img src="profile.jpg" alt="Jimwel E. Carbonel" id="profile-img-trigger" class="profile-img" title="Click to view full profile">
         <div class="profile-header">
           <h1>Hello, I'm Jimwel E. Carbonel</h1>
@@ -46,7 +45,6 @@
           <button class="btn save-btn" data-panel="tab-activity">Save Activity</button>
         </div>
         <div class="image-gallery" id="gallery-activity"></div>
-        <div class="cards-container"></div>
       </div>
 
       <!-- Sub-Tab 2: Quizzes -->
@@ -58,7 +56,6 @@
           <button class="btn save-btn" data-panel="tab-quizzes">Save Quizzes</button>
         </div>
         <div class="image-gallery" id="gallery-quizzes"></div>
-        <div class="cards-container"></div>
       </div>
 
       <!-- Sub-Tab 3: Laboratory -->
@@ -70,7 +67,6 @@
           <button class="btn save-btn" data-panel="tab-assignment">Save Laboratory</button>
         </div>
         <div class="image-gallery" id="gallery-assignment"></div>
-        <div class="cards-container"></div>
       </div>
 
       <button id="back-btn" class="btn back-btn">&larr; Back to About Me</button>
@@ -90,9 +86,20 @@
 
       <div class="modal-actions">
         <input type="file" id="upload-profile" class="file-input" accept="image/*">
-        <label for="upload-profile" class="btn upload-btn"> Add Image</label>
-        <button id="delete-profile-btn" class="btn clear-img-btn"> Delete Image</button>
-        <button id="save-profile-btn" class="btn save-btn"> Save Image</button>
+        <label for="upload-profile" class="btn upload-btn">1. Add Image</label>
+        <button id="delete-profile-btn" class="btn clear-img-btn">2. Delete Image</button>
+        <button id="save-profile-btn" class="btn save-btn">3. Save Image</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- GALLERY IMAGE PREVIEW MODAL -->
+  <div id="image-viewer-modal" class="modal">
+    <div class="modal-content viewer-modal-content">
+      <span class="close-viewer-modal close-modal">&times;</span>
+      <h2>Image Preview</h2>
+      <div class="full-img-container">
+        <img id="viewer-img-src" src="" alt="Viewed Image">
       </div>
     </div>
   </div>
