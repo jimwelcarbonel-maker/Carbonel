@@ -233,11 +233,35 @@ body {
   display: block;
 }
 
+/* Scrollable Gallery Container */
 .image-gallery {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: 18px;
   margin-bottom: 25px;
+  max-height: 320px;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+/* Custom Neon Scrollbar */
+.image-gallery::-webkit-scrollbar {
+  width: 6px;
+}
+
+.image-gallery::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.5);
+  border-radius: 4px;
+}
+
+.image-gallery::-webkit-scrollbar-thumb {
+  background: var(--neon-cyan);
+  border-radius: 4px;
+  box-shadow: 0 0 8px var(--neon-cyan);
+}
+
+.image-gallery::-webkit-scrollbar-thumb:hover {
+  background: var(--neon-glow);
 }
 
 .image-item {
@@ -289,9 +313,9 @@ body {
   box-shadow: 0 0 12px var(--danger);
 }
 
-/* Page 2 Back Button Positioning - Adjusted lower */
+/* Page 2 Back Button Positioning */
 .back-btn {
-  margin-top: 90px;
+  margin-top: 40px;
   background: transparent;
   border: 1px solid var(--text-muted);
   color: var(--text-muted);
