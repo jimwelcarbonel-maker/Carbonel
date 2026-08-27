@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio</title>
-  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -12,10 +12,14 @@
     
     <!-- PAGE 1: About Me -->
     <section id="page-1" class="page active">
-      <div class="profile-header">
-        <h1>Hello, I'm Jimwel E. Carbonel</h1>
-        <p>Computer Science Student & Future Game Developer</p>
-        <p>From: BSCS-3C</p>
+      <div class="profile-container">
+        <!-- Replace profile.jpg with your image file path -->
+        <img src="profile.jpg" alt="Jimwel E. Carbonel" class="profile-img">
+        <div class="profile-header">
+          <h1>Hello, I'm Jimwel E. Carbonel</h1>
+          <p class="subtitle">Computer Science Student & Future Game Developer</p>
+          <p class="section-info">From: BSCS-3C</p>
+        </div>
       </div>
 
       <div class="bio">
@@ -35,30 +39,40 @@
 
       <!-- Sub-Tab 1: Activity -->
       <div id="tab-activity" class="tab-panel active">
+        <div class="panel-actions">
+          <input type="file" id="upload-activity" class="file-input" accept="image/*">
+          <label for="upload-activity" class="btn upload-btn">+ Add Image</label>
+        </div>
+        <div class="image-gallery" id="gallery-activity"></div>
+
         <div class="card">
           <h3>Lab Activity 1: Dynamic UI Navigation</h3>
           <p>Implemented single-page application tab transitions using HTML, CSS, and vanilla JavaScript.</p>
-        </div>
-        <div class="card">
-          <h3>Lab Activity 2: Data Structures & Algorithms</h3>
-          <p>Explored array manipulations, stack structures, and sorting algorithms.</p>
         </div>
       </div>
 
       <!-- Sub-Tab 2: Quizzes -->
       <div id="tab-quizzes" class="tab-panel">
+        <div class="panel-actions">
+          <input type="file" id="upload-quizzes" class="file-input" accept="image/*">
+          <label for="upload-quizzes" class="btn upload-btn">+ Add Image</label>
+        </div>
+        <div class="image-gallery" id="gallery-quizzes"></div>
+
         <div class="card">
           <h3>Quiz 1: Web Fundamentals</h3>
           <p>Score: 95/100 — Covered HTML5 semantic tags, CSS Box Model, and DOM manipulation basics.</p>
         </div>
-        <div class="card">
-          <h3>Quiz 2: Database Systems</h3>
-          <p>Score: 98/100 — Relational modeling, normalization, and ACID properties.</p>
-        </div>
       </div>
 
-      <!-- Sub-Tab 3: Assignment -->
+      <!-- Sub-Tab 3: Laboratory -->
       <div id="tab-assignment" class="tab-panel">
+        <div class="panel-actions">
+          <input type="file" id="upload-assignment" class="file-input" accept="image/*">
+          <label for="upload-assignment" class="btn upload-btn">+ Add Image</label>
+        </div>
+        <div class="image-gallery" id="gallery-assignment"></div>
+
         <div class="card">
           <h3>Laboratory 1: SDLC Analysis</h3>
           <p>Case study comparing Agile, Waterfall, and Spiral methodologies for rapid prototyping.</p>
@@ -70,6 +84,6 @@
 
   </div>
 
-  <script src="index.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

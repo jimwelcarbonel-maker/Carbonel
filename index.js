@@ -6,19 +6,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const tabs = document.querySelectorAll('.nav-tab');
   const panels = document.querySelectorAll('.tab-panel');
 
-  // Switch to Page 2
+  // Navigation Logic
   nextBtn.addEventListener('click', () => {
     page1.classList.remove('active');
     page2.classList.add('active');
   });
 
-  // Switch back to Page 1
   backBtn.addEventListener('click', () => {
     page2.classList.remove('active');
     page1.classList.add('active');
   });
 
-  // Handle Tab Switching on Page 2
   tabs.forEach(tab => {
     tab.addEventListener('click', (e) => {
       tabs.forEach(t => t.classList.remove('active'));
@@ -29,4 +27,28 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById(targetPanelId).classList.add('active');
     });
   });
+
+  // Image Upload Logic for Each Category
+  setupImageUploader('upload-activity', 'gallery-activity');
+  setupImageUploader('upload-quizzes', 'gallery-quizzes');
+  setupImageUploader('upload-assignment', 'gallery-assignment');
+
+  function setupImageUploader(inputId, galleryId) {
+    const fileInput = document.getElementById(inputId);
+    const gallery = document.getElementById(galleryId);
+
+    fileInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          const img = document.createElement('img');
+          img.src = event.target.result;
+          img.className = 'uploaded-img';
+          gallery.appendChild(img);
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+  }
 });

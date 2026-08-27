@@ -48,17 +48,37 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Page 1 Styling */
-.profile-header h1 {
-  font-size: 2.5rem;
-  color: var(--accent);
-  margin-bottom: 10px;
+/* Page 1 Profile Header & Image */
+.profile-container {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  margin-bottom: 20px;
 }
 
-.profile-header p {
+.profile-img {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--accent);
+}
+
+.profile-header h1 {
+  font-size: 2rem;
+  color: var(--accent);
+  margin-bottom: 5px;
+}
+
+.profile-header .subtitle {
+  color: var(--text);
+  font-size: 1rem;
+  margin-bottom: 4px;
+}
+
+.profile-header .section-info {
   color: var(--text-muted);
-  font-size: 1.1rem;
-  line-height: 1.6;
+  font-size: 0.9rem;
 }
 
 .bio {
@@ -75,6 +95,7 @@ body {
   font-weight: 600;
   border-radius: 8px;
   cursor: pointer;
+  display: inline-block;
   transition: all 0.2s ease;
 }
 
@@ -89,7 +110,7 @@ body {
   gap: 30px;
   border-bottom: 2px solid #334155;
   padding-bottom: 15px;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 }
 
 .nav-tab {
@@ -125,8 +146,37 @@ body {
   display: block;
 }
 
+/* Image Upload & Gallery */
+.panel-actions {
+  margin-bottom: 20px;
+}
+
+.file-input {
+  display: none;
+}
+
+.upload-btn {
+  font-size: 0.9rem;
+  padding: 8px 18px;
+}
+
+.image-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.uploaded-img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #334155;
+}
+
 .back-btn {
-  margin-top: 40px;
+  margin-top: 30px;
   background: transparent;
   border: 1px solid var(--text-muted);
   color: var(--text-muted);
