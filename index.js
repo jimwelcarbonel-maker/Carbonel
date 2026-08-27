@@ -33,15 +33,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Event Delegation for Delete Buttons (Card or Single Image)
+  // Event Delegation for Single Image Delete Buttons
   document.getElementById('page-2').addEventListener('click', (e) => {
     if (e.target.classList.contains('delete-btn')) {
-      const card = e.target.closest('.card');
       const imageItem = e.target.closest('.image-item');
-
-      if (card) {
-        card.remove();
-      } else if (imageItem) {
+      if (imageItem) {
         imageItem.remove();
       }
     }
@@ -56,16 +52,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Save current section layout to LocalStorage
+  // Save current section state to LocalStorage
   document.querySelectorAll('.save-btn').forEach(button => {
     button.addEventListener('click', (e) => {
       const panelId = e.target.getAttribute('data-panel');
       const panel = document.getElementById(panelId);
       
-      const cardsHtml = panel.querySelector('.cards-container').innerHTML;
       const galleryHtml = panel.querySelector('.image-gallery').innerHTML;
-
-      localStorage.setItem(`${panelId}_cards`, cardsHtml);
       localStorage.setItem(`${panelId}_gallery`, galleryHtml);
 
       alert('Changes saved successfully!');
@@ -109,12 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Helper to load data from localStorage
   function loadSavedData(panelId, galleryId) {
-    const savedCards = localStorage.getItem(`${panelId}_cards`);
     const savedGallery = localStorage.getItem(`${panelId}_gallery`);
-
-    if (savedCards) {
-      document.querySelector(`#${panelId} .cards-container`).innerHTML = savedCards;
-    }
     if (savedGallery) {
       document.getElementById(galleryId).innerHTML = savedGallery;
     }
