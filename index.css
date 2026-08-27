@@ -35,7 +35,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Base Container (Page 1) */
+/* Base Container */
 .container {
   background: var(--card-bg);
   backdrop-filter: blur(16px);
@@ -44,18 +44,19 @@ body {
   max-width: 900px;
   min-height: 580px;
   border-radius: 24px;
-  padding: 50px;
+  padding: 40px 50px;
   border: 1px solid var(--border-ice);
   box-shadow: 0 0 30px rgba(6, 182, 212, 0.25), inset 0 0 15px rgba(56, 189, 248, 0.1);
   position: relative;
-  transition: max-width 0.3s ease, min-height 0.3s ease, padding 0.3s ease;
+  transition: max-width 0.3s ease, min-height 0.3s ease;
 }
 
 /* Expanded Container Size (Page 2) */
 .container.wide-container {
   max-width: 1150px;
-  min-height: 680px;
-  padding: 55px;
+  max-height: 88vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .page {
@@ -64,7 +65,9 @@ body {
 }
 
 .page.active {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 @keyframes fadeIn {
@@ -121,7 +124,6 @@ body {
   text-shadow: 0 0 2px rgba(56, 189, 248, 0.5);
 }
 
-/* Page 1 Button Positioning */
 #next-btn {
   margin-top: 45px;
 }
@@ -153,7 +155,7 @@ body {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 
 .file-input {
@@ -195,7 +197,7 @@ body {
   gap: 35px;
   border-bottom: 1px solid var(--border-ice);
   padding-bottom: 15px;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 }
 
 .nav-tab {
@@ -230,27 +232,28 @@ body {
 }
 
 .tab-panel.active {
-  display: block;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Scrollable Gallery Container */
+/* Scrollable Gallery Box */
 .image-gallery {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: 18px;
-  margin-bottom: 25px;
-  max-height: 320px;
+  max-height: 380px;
   overflow-y: auto;
-  padding-right: 8px;
+  padding-right: 12px;
+  margin-bottom: 20px;
 }
 
-/* Custom Neon Scrollbar */
+/* Custom Styled Scrollbar */
 .image-gallery::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
 
 .image-gallery::-webkit-scrollbar-track {
-  background: rgba(15, 23, 42, 0.5);
+  background: rgba(15, 23, 42, 0.6);
   border-radius: 4px;
 }
 
@@ -280,7 +283,7 @@ body {
 }
 
 .uploaded-img:hover {
-  transform: scale(1.05);
+  transform: scale(1.03);
   box-shadow: 0 0 15px var(--neon-cyan);
 }
 
@@ -313,9 +316,9 @@ body {
   box-shadow: 0 0 12px var(--danger);
 }
 
-/* Page 2 Back Button Positioning */
 .back-btn {
-  margin-top: 40px;
+  margin-top: auto;
+  align-self: flex-start;
   background: transparent;
   border: 1px solid var(--text-muted);
   color: var(--text-muted);
