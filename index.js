@@ -6,6 +6,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const tabs = document.querySelectorAll('.nav-tab');
   const panels = document.querySelectorAll('.tab-panel');
 
+  // Load saved content from local storage on page load
+  loadSavedData('tab-activity', 'gallery-activity');
+  loadSavedData('tab-quizzes', 'gallery-quizzes');
+  loadSavedData('tab-assignment', 'gallery-assignment');
+
   // Navigation Logic
   nextBtn.addEventListener('click', () => {
     page1.classList.remove('active');
@@ -28,12 +33,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Attach Delete functionality using Event Delegation
+  // Event Delegation for Delete Buttons (Card or Single Image)
   document.getElementById('page-2').addEventListener('click', (e) => {
     if (e.target.classList.contains('delete-btn')) {
       const card = e.target.closest('.card');
       const imageItem = e.target.closest('.image-item');
-      
+
       if (card) {
         card.remove();
       } else if (imageItem) {
@@ -42,7 +47,32 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Image Upload Logic for Each Category
+  // Clear all images in a section
+  document.querySelectorAll('.clear-img-btn').forEach(button => {
+    button.addEventListener('click', (e) => {
+      const galleryId = e.target.getAttribute('data-gallery');
+      const gallery = document.getElementById(galleryId);
+      gallery.innerHTML = '';
+    });
+  });
+
+  // Save current section layout to LocalStorage
+  document.querySelectorAll('.save-btn').forEach(button => {
+    button.addEventListener('click', (e) => {
+      const panelId = e.target.getAttribute('data-panel');
+      const panel = document.getElementById(panelId);
+      
+      const cardsHtml = panel.querySelector('.cards-container').innerHTML;
+      const galleryHtml = panel.querySelector('.image-gallery').innerHTML;
+
+      localStorage.setItem(`${panelId}_cards`, cardsHtml);
+      localStorage.setItem(`${panelId}_gallery`, galleryHtml);
+
+      alert('Changes saved successfully!');
+    });
+  });
+
+  // Image Upload Handlers
   setupImageUploader('upload-activity', 'gallery-activity');
   setupImageUploader('upload-quizzes', 'gallery-quizzes');
   setupImageUploader('upload-assignment', 'gallery-assignment');
@@ -73,7 +103,20 @@ document.addEventListener('DOMContentLoaded', () => {
         };
         reader.readAsDataURL(file);
       }
-      fileInput.value = ''; // Reset input to allow re-uploading the same file if needed
+      fileInput.value = '';
     });
+  }
+
+  // Helper to load data from localStorage
+  function loadSavedData(panelId, galleryId) {
+    const savedCards = localStorage.getItem(`${panelId}_cards`);
+    const savedGallery = localStorage.getItem(`${panelId}_gallery`);
+
+    if (savedCards) {
+      document.querySelector(`#${panelId} .cards-container`).innerHTML = savedCards;
+    }
+    if (savedGallery) {
+      document.getElementById(galleryId).innerHTML = savedGallery;
+    }
   }
 });
